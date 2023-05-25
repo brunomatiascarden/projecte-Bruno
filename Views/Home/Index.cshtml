@@ -1,0 +1,99 @@
+﻿@model List<Character>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personajes de Rick and Morty</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="wwwroot/css/site.css">
+
+</head>
+<body class="fondo">
+
+    <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/1200px-Rick_and_Morty.svg.png" alt="Google Logo">
+    </div>
+
+    <h1>Personajes de Rick and Morty</h1>
+
+
+    <form method="post" action="@Url.Action("Search", "Home")">
+        <input type="text" name="searchTerm" placeholder="Buscar personaje">
+        <button type="submit">Buscar</button>
+    </form>
+
+    @* El elemento form sirve para generar un archivo interactivo para que el usuario pueda enviar datos al servidor y estos se procesen. *@
+    @* y el elemento action indica la ubicacion donde se van a enviar los datos. *@
+    @* Method es para especificar la solicitud http para enviar los datos del formulario al servidor cuando el usuario lo envia *@
+
+    <div class="carrousel">
+    <div class="row row-cols-3 g-4">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var character in Model)
+            {
+                <div class="col">
+                    <div class="card">
+                        <img src="@character.Image" class="card-img-top" alt="@character.Name">
+                        <div class="card-body">
+                            <h5 class="card-title">@character.Name</h5>
+                            <p class="card-text">Tipo: @character.type</p>
+                            <p class="card-text">Estado: @character.Status</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+
+    <!-- Botón para cargar más imágenes -->
+    <button id="loadMoreButton" class="btn btn-primary">Cargar más imágenes</button>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Obtén una lista de todas las tarjetas de personajes
+        const characterCards = document.querySelectorAll('.card');
+
+
+        // Oculta todas las tarjetas
+        function hideAllCards() {
+            characterCards.forEach(card => {
+                card.style.display = 'none';
+            });
+        }
+
+
+        // Muestra las siguientes 9 tarjetas (3x3) o todas las restantes si no hay suficientes
+        function showNextCards() {
+            let visibleCount = 0;
+            characterCards.forEach((card, index) => {
+                if (card.style.display === 'none' && visibleCount < 9) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                }
+            });
+
+
+            if (visibleCount === 0) {
+                // No hay más tarjetas por mostrar, oculta el botón
+                document.getElementById('loadMoreButton').style.display = 'none';
+            }
+        }
+
+
+        // Evento click en el botón de cargar más imágenes
+        document.getElementById('loadMoreButton').addEventListener('click', showNextCards);
+
+
+        // Inicialmente, oculta todas las tarjetas y muestra las primeras 9
+        hideAllCards();
+        showNextCards();
+    </script>
+
+</body>
+</html>

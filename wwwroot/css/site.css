@@ -1,0 +1,115 @@
+.card
+{
+  width: auto;
+  align-items: center;
+  width: cover;
+  background-color: #2F2F2F;
+}
+
+body 
+{
+  background-color: black;
+}
+
+
+.carrousel img
+{
+  width: 250px;
+  height: 250px;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 50%;
+  align-items: center;
+  margin-left: 6%;
+  margin-top: 1%;
+}
+
+
+.carrousel img:hover
+{
+  transform: scale(1.1);
+  filter: saturate(0%);
+}
+
+.carrousel {
+  background-color: #121212;
+  justify-content: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 2%;
+  color: grey;
+  border-radius: 5%;
+}
+
+
+input
+{
+  border-radius: 100px;
+  margin-bottom: 2%;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  opacity: 0.8;
+  border: 3px solid black;
+}
+
+h1
+{
+  text-decoration: underline solid #D4D4D4;
+  margin-bottom: 1%;
+  margin-top: 3%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); 
+  background-size: 50px;
+  text-align: center;
+}
+
+h1:hover
+{
+  color: #F7711F;
+}
+
+.logo img 
+{
+  justify-content: center;
+  display: flex;
+  width: 350px;
+  flex: 200px;
+  margin-top: 2%;
+  transition: transform 0.2s;
+  margin-left: 37%;
+}
+
+.logo img:hover
+{
+  transform: scale(1.1);
+}
+
+button
+{
+  margin-top: 2%;
+  opacity: 0.8;
+}
+
+.card-body h5:hover
+{
+  color: #F7711F;
+}
+
+
+
+button
+{
+  background-color: white;
+  border: 1px solid orange;
+  border-radius: 10%;
+  transition: transform 0.2s;
+}
+
+button:hover
+{
+  transform: scale(1.1);
+}
+
+
+
+
